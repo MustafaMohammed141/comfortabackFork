@@ -11,6 +11,7 @@ const getUsers = async (req, res) => {
     res.status(500).json({ status: 500, message: "Server error" });
     console.log(err);
   }
+
 };
 const getSingleUsers = async () => {
   console.log(`getUsers`);
