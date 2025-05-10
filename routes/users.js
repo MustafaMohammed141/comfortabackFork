@@ -1,10 +1,21 @@
 const express = require("express");
-const { getUsers, addUsers, deleteUsers, getsingleUsers } = require("../controllers/users");
-const router = express.Router();
-
-router.route("/").get(getUsers());
-router.route("/").post(addUsers());
-router.route("/").delete(deleteUsers());
-router.route("/:userId").get(getsingleUsers());
-
-module.exports = router;
+const user_routes = express.Router();
+const { checkAuth } = require("../middleware/checkAuth");
+const {
+  getUsers,
+  postUsers,
+  deleteUsers,
+  putUsers,
+  getSingleUsers,
+} = require("../controllers/users");
+const { signup, login } = require("../controllers/auth");
+user_routes.route("/").get(getUsers);
+user_routes.route("/Signup").post(signup);
+user_routes.route("/login").get(login);
+user_routes
+  .route("/:userId")
+  .get(getSingleUsers)
+  .post(postUsers)
+  .put(putUsers)
+  .delete(deleteUsers);
+module.exports = { user_routes };

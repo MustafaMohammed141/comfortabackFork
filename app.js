@@ -1,12 +1,14 @@
 const express = require("express");
 const mongoose = require("mongoose");
-require('dotenv').config();
+const cors = require("cors");
 const { admin_routes } = require("./routes/admins");
 const { product_routes } = require("./routes/products");
 const { user_routes } = require("./routes/users");
 const app = express();
 
-server.use(express.json());
+require("dotenv").config();
+app.use(cors());
+app.use(express.json());
 
 const MONGO_URI = process.env.MONGO_URI;
 console.log("DB Connection String:", MONGO_URI);
@@ -20,8 +22,6 @@ mongoose.connect(MONGO_URI)
     console.error("MongoDB Connection Error:", err);
   });
 
-
-
 app.use("/users", user_routes);
 app.use("/products", product_routes);
 app.use("/admins", admin_routes);
@@ -31,7 +31,5 @@ app.use((req, res) => {
     data: { data: null, message: "invalid route" },
   });
 });
- app.listen(3000, () => {
-   console.log(`online`); });
 
-//modules.exports = app;
+module.exports = app;
