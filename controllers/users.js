@@ -44,7 +44,7 @@ const getSingleUsers = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       status: 500,
-      data: { data: null, message: "Server error" },
+      data: { data: null, message: err },
     });
   }
 };
