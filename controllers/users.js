@@ -9,6 +9,7 @@ const getUsers = async () => {
     } catch (err) {
       res.status(500).json({ status: 500, message: "Server error" });
     }
+     return users;
   };
 };
 const getSingleUsers = async () => {
