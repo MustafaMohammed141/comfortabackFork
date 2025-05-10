@@ -3,7 +3,7 @@ const user_routes = express.Router();
 const { checkAuth } = require("../middleware/checkAuth");
 const {
   getUsers,
-  postUsers,
+  addUsers,
   deleteUsers,
   putUsers,
   getSingleUsers,
@@ -15,7 +15,7 @@ user_routes.route("/login").get(login);
 user_routes
   .route("/:userId")
   .get(getSingleUsers)
-  .post(postUsers)
+  .post(addUsers)
   .put(putUsers)
   .delete(deleteUsers);
 module.exports = { user_routes };
