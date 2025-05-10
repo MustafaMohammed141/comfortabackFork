@@ -26,11 +26,10 @@ const putUsers = async (req, res) => {
   console.log("put Users");
   res.status(200).json({ message: "User updated (dummy response)" });
 };
-
 const getSingleUsers = async (req, res) => {
-  const { _id } = req.params;
+  const { userId } = req.params; // Change _id to userId
   try {
-    const singleUser = await User.findById(_id);
+    const singleUser = await User.findById(userId);
     if (!singleUser) {
       return res.status(404).json({
         status: 404,
@@ -44,11 +43,10 @@ const getSingleUsers = async (req, res) => {
   } catch (err) {
     return res.status(500).json({
       status: 500,
-      data: { data: null, message: err },
+      data: { data: null, message: err.message }, // Return error message
     });
   }
 };
-
 module.exports = {
   getUsers,
   addUsers,
