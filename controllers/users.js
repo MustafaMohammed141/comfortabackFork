@@ -1,5 +1,15 @@
 const getUsers = async () => {
-  console.log(`getUsers`);
+  const getUsers = async (req, res) => {
+    try {
+      const users = await userschema.find({});
+      res.status(200).json({
+        status: 200,
+        data: { data: users, message: "Users fetched successfully" },
+      });
+    } catch (err) {
+      res.status(500).json({ status: 500, message: "Server error" });
+    }
+  };
 };
 const getSingleUsers = async () => {
   console.log(`getUsers`);
