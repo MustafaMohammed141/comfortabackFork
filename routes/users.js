@@ -10,7 +10,7 @@ const {
 } = require("../controllers/users");
 const { signup, login } = require("../controllers/auth");
 
-user_routes.route("/").get(checkAuth, getUsers);
+user_routes.route("/").get(getUsers);
 user_routes.route("/Signup").post(signup);
 user_routes.route("/login").get(login);
 user_routes
