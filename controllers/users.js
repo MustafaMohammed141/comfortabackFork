@@ -27,8 +27,6 @@ const  User =require("../models/userschema");
     res.status(200).json({ message: "User deleted (dummy response)" });
   };
   
-const User = require("../models/userschema");
-
 const getSingleUsers = async (req, res) => {
   const { userId } = req.params;
 
