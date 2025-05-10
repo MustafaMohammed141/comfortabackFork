@@ -1,5 +1,5 @@
 
-const  userschema=require("../models/userschema");
+const  User =require("../models/userschema");
   const getUsers = async (req, res) => {
 
   /*  res.status(200).json({
@@ -7,7 +7,7 @@ const  userschema=require("../models/userschema");
       data: { data: users, message: "Users fetched successfully" },
     });*/
     try {
-      const users = await userschema.find({});
+      const users = await User.find({});
       res.status(200).json({
         status: 200,
         data: { data: users, message: "Users fetched successfully" },
@@ -30,8 +30,7 @@ const  userschema=require("../models/userschema");
   const getSingleUsers = async (req, res) => {
     const { userId } = req.params;
   
-    const singleUser = users.find((user) => user.id == userId);
-  
+const singleUser = await User.findById(userId);  
     if (!singleUser) {
       return res.status(404).json({
         status: 404,
