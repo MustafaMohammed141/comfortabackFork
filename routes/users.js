@@ -15,9 +15,9 @@ user_routes.route("/Signup").post(signup);
 user_routes.route("/login").get(login);
 user_routes
   .route("/:userId")
-  .get(checkAuth, getSingleUsers)
-  .post(checkAuth, postUsers)
-  .put(checkAuth, putUsers)
-  .delete(checkAuth, deleteUsers);
+  .get(getSingleUsers)
+  .post(postUsers)
+  .put(putUsers)
+  .delete(deleteUsers);
 
 module.exports = { user_routes };
