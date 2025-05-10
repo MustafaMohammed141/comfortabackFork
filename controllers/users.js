@@ -27,23 +27,33 @@ const  User =require("../models/userschema");
     res.status(200).json({ message: "User deleted (dummy response)" });
   };
   
-  const getSingleUsers = async (req, res) => {
-    const { userId } = req.params;
-  
-const singleUser = await User.findById(userId);  
+const User = require("../models/userschema");
+
+const getSingleUsers = async (req, res) => {
+  const { userId } = req.params;
+
+  try {
+    const singleUser = await User.findById(userId);
+
     if (!singleUser) {
       return res.status(404).json({
         status: 404,
         data: { data: null, message: "Invalid user ID" },
       });
     }
-  
+
     return res.status(200).json({
       status: 200,
       data: { data: singleUser, message: "User fetched successfully" },
     });
-  };
-  
+  } catch (err) {
+    return res.status(500).json({
+      status: 500,
+      data: { data: null, message: "Server error" },
+    });
+  }
+};
+
   module.exports = {
     getUsers,
     addUsers,
