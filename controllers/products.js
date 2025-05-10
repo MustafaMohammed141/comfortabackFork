@@ -19,6 +19,7 @@ const deleteProducts = async () => {
 const putProducts = async () => {
   console.log(`putProducts`);
 };
+
 module.exports = {
   getProducts,
   postProducts,
