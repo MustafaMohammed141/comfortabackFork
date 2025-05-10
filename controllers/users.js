@@ -28,9 +28,9 @@ const putUsers = async (req, res) => {
 };
 
 const getSingleUsers = async (req, res) => {
-  const { userId } = req.params;
+  const { _id } = req.params;
   try {
-    const singleUser = await User.findById(userId);
+    const singleUser = await User.findById(_id);
     if (!singleUser) {
       return res.status(404).json({
         status: 404,
