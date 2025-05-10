@@ -5,9 +5,14 @@ const { admin_routes } = require("./routes/admins");
 const { product_routes } = require("./routes/products");
 const { user_routes } = require("./routes/users");
 const app = express();
+const corsOptions = {
+  origin: ["https://comforta-furniture.vercel.app"],
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  credentials: true,
+};
 require("dotenv").config();
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use(express.json());
 
 const MONGO_URI = process.env.MONGO_URI;
