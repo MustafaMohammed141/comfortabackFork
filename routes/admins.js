@@ -17,4 +17,5 @@ admin_routes
   .put(checkAuth, putAdmins)
   .delete(checkAuth, deleteAdmins);
 
+
 module.exports = { admin_routes };
