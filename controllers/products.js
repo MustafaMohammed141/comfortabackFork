@@ -1,7 +1,12 @@
 const product = require("../models/product");
 const getProducts = async (req, res) => {
-  const products = await product.find({});
-  return products;};
+  try {
+    const products = await product.find({});
+    return res.json(products);
+  } catch (error) {
+    return res.status(500).json({ error: "Internal Server Error" });
+  }
+};
 const getSingleProducts = async () => {
   console.log(`getProducts`);
 };
@@ -14,6 +19,7 @@ const deleteProducts = async () => {
 const putProducts = async () => {
   console.log(`putProducts`);
 };
+
 module.exports = {
   getProducts,
   postProducts,
