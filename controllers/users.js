@@ -27,7 +27,7 @@ const  userschema=require("../models/userschema");
     res.status(200).json({ message: "User deleted (dummy response)" });
   };
   
-  const getsingleUsers = async (req, res) => {
+  const getSingleUsers = async (req, res) => {
     const { userId } = req.params;
   
     const singleUser = users.find((user) => user.id == userId);
@@ -49,7 +49,7 @@ const  userschema=require("../models/userschema");
     getUsers,
     addUsers,
     deleteUsers,
-    getsingleUsers,
+    getSingleUsers,
   };
    
 
