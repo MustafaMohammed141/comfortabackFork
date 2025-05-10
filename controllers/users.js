@@ -13,9 +13,23 @@ const getUsers = async (req, res) => {
   }
 
 };
-const getSingleUsers = async () => {
-  console.log(`getUsers`);
-};
+const getsingleUsers = async (req, res) => {
+    const { userId } = req.params;
+  
+    const singleUser = users.find((user) => user.id == userId);
+  
+    if (!singleUser) {
+      return res.status(404).json({
+        status: 404,
+        data: { data: null, message: "Invalid user ID" },
+      });
+    }
+  
+    return res.status(200).json({
+      status: 200,
+      data: { data: singleUser, message: "User fetched successfully" },
+    });
+  };
 const postUsers = async () => {
   console.log(`postUsers`);
 };
