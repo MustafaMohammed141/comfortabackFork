@@ -4,8 +4,8 @@ const cors = require("cors");
 const { admin_routes } = require("./routes/admins");
 const { product_routes } = require("./routes/products");
 const { user_routes } = require("./routes/users");
-require("dotenv").config();
 const app = express();
+require("dotenv").config();
 
 app.use(cors());
 app.use(express.json());
@@ -35,4 +35,4 @@ app.use((req, res) => {
 app.listen(3000, () => {
   console.log(`online`);
 });
-// modules.exports = app;
+module.exports = app;
