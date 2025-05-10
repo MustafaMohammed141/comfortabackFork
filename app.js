@@ -1,32 +1,37 @@
 const express = require("express");
 const mongoose = require("mongoose");
-const cors = require("cors");
+require('dotenv').config();
 const { admin_routes } = require("./routes/admins");
 const { product_routes } = require("./routes/products");
 const { user_routes } = require("./routes/users");
 const app = express();
 
-require("dotenv").config();
+server.use(express.json());
 
-const DB = process.env.MONGO_URI;
-mongoose
-  .connect(DB)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.error(err));
-// =========
+const MONGO_URI = process.env.MONGO_URI;
+console.log("DB Connection String:", MONGO_URI);
 
-app.use(cors());
-app.use(express.json());
+
+mongoose.connect(MONGO_URI)
+  .then(() => {
+    console.log("MongoDB Connected");
+  })
+  .catch((err) => {
+    console.error("MongoDB Connection Error:", err);
+  });
+
+
 
 app.use("/users", user_routes);
 app.use("/products", product_routes);
 app.use("/admins", admin_routes);
-
 app.use((req, res) => {
   return res.status(400).json({
     status: 400,
     data: { data: null, message: "invalid route" },
   });
 });
+ app.listen(3000, () => {
+   console.log(`online`); });
 
-module.exports = app;
+//modules.exports = app;
