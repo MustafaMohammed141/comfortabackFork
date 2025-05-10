@@ -1,5 +1,5 @@
-const mongoose = require("mongoose");
 
+const mongoose = require("mongoose");
 const userschema = new mongoose.Schema({
   name: {
     type: String,
@@ -14,10 +14,6 @@ const userschema = new mongoose.Schema({
     type: String,
     required: true,
   },
-  role: {
-    type: String,
-    default: "user",
-  },
   phone: {
     type: String,
   },
@@ -25,12 +21,13 @@ const userschema = new mongoose.Schema({
     type: String,
   },
   age: {
-    type: Number,
+    type: Number, 
   },
   gender: {
     type: String,
-    enum: ["male", "female"],
-  },
+    enum: ["male", "female"], 
+  }
 });
 
-module.exports = mongoose.model("User", userschema);
+module.exports = mongoose.model('User', userschema); 
+

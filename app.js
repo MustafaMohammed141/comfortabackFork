@@ -5,8 +5,8 @@ const { admin_routes } = require("./routes/admins");
 const { product_routes } = require("./routes/products");
 const { user_routes } = require("./routes/users");
 const app = express();
-require("dotenv").config();
 
+require("dotenv").config();
 app.use(cors());
 app.use(express.json());
 
@@ -33,6 +33,7 @@ app.use((req, res) => {
 });
 
 app.listen(3000, () => {
-  console.log(`online`);
+  console.log(`live`);
 });
+
 module.exports = app;
