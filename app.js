@@ -13,8 +13,8 @@ app.use(express.json());
 const MONGO_URI = process.env.MONGO_URI;
 console.log("DB Connection String:", MONGO_URI);
 
-
-mongoose.connect(MONGO_URI)
+mongoose
+  .connect(MONGO_URI)
   .then(() => {
     console.log("MongoDB Connected");
   })
