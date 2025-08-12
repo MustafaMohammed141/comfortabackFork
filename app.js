@@ -6,8 +6,9 @@ const { product_routes } = require("./routes/products");
 const { user_routes } = require("./routes/users");
 const app = express();
 
-require("dotenv").config();
 app.use(cors());
+
+require("dotenv").config();
 app.use(express.json());
 
 const MONGO_URI = process.env.MONGO_URI;
